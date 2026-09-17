@@ -147,6 +147,18 @@ export const SupabaseRenderModal: React.FC<SupabaseRenderModalProps> = ({
             </h3>
           </div>
 
+          {/* Solución al error de 'dist' */}
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 space-y-1">
+            <div className="flex items-center gap-1.5 font-bold text-amber-800">
+              <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+              <span>¿Error en Render: "directory dist does not exist"?</span>
+            </div>
+            <p className="text-[11px] text-amber-700 leading-relaxed">
+              Ocurre si el <strong>Build Command</strong> no incluye la instalación de dependencias previa. 
+              Asegúrate de colocar <strong>npm install && npm run build</strong> en lugar de solo <em>npm run build</em>.
+            </p>
+          </div>
+
           <ol className="space-y-3 text-xs text-slate-700">
             <li className="flex items-start gap-2.5">
               <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-700 font-bold flex items-center justify-center shrink-0 text-[11px]">
@@ -155,7 +167,7 @@ export const SupabaseRenderModal: React.FC<SupabaseRenderModalProps> = ({
               <div>
                 <strong>Crear Static Site en Render:</strong>
                 <p className="text-slate-500">
-                  En <a href="https://render.com" target="_blank" rel="noopener noreferrer" className="text-teal-700 underline font-semibold">dashboard.render.com</a>, haz clic en <strong>New +</strong> y selecciona <strong>Static Site</strong> (o usa el <code className="bg-slate-100 px-1 py-0.5 rounded font-mono">render.yaml</code> ya incluido en el proyecto).
+                  En <a href="https://render.com" target="_blank" rel="noopener noreferrer" className="text-teal-700 underline font-semibold">dashboard.render.com</a>, haz clic en <strong>New +</strong> y selecciona <strong>Static Site</strong> (¡no Web Service!).
                 </p>
               </div>
             </li>
@@ -165,10 +177,18 @@ export const SupabaseRenderModal: React.FC<SupabaseRenderModalProps> = ({
                 B
               </span>
               <div>
-                <strong>Comandos de compilación en Render:</strong>
-                <div className="mt-1 bg-slate-50 border border-slate-200 rounded-lg p-2.5 font-mono text-[11px] space-y-1 text-slate-800">
-                  <div><strong>Build Command:</strong> npm run build</div>
-                  <div><strong>Publish Directory:</strong> dist</div>
+                <strong>Configuración exacta en Settings de Render:</strong>
+                <div className="mt-1.5 bg-slate-900 text-slate-200 rounded-lg p-3 font-mono text-[11px] space-y-2 border border-slate-800">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-slate-400">Build Command:</span>
+                      <div className="text-emerald-400 font-bold">npm install && npm run build</div>
+                    </div>
+                  </div>
+                  <div className="border-t border-slate-800 pt-1.5">
+                    <span className="text-slate-400">Publish Directory:</span>
+                    <div className="text-cyan-400 font-bold">dist</div>
+                  </div>
                 </div>
               </div>
             </li>
@@ -178,10 +198,15 @@ export const SupabaseRenderModal: React.FC<SupabaseRenderModalProps> = ({
                 C
               </span>
               <div>
-                <strong>Añade las variables de entorno en Render:</strong>
-                <p className="text-slate-500">
-                  En la pestaña <em>Environment</em> de Render, agrega <code className="font-mono text-emerald-700">VITE_SUPABASE_URL</code> y <code className="font-mono text-emerald-700">VITE_SUPABASE_ANON_KEY</code>. Render desplegará tu app con SSL automático en pocos segundos.
+                <strong>Variables de Entorno en Render (Environment):</strong>
+                <p className="text-slate-500 mb-1">
+                  En la pestaña <em>Environment</em> de tu servicio en Render, agrega:
                 </p>
+                <div className="bg-slate-50 border border-slate-200 rounded-lg p-2 font-mono text-[10px] space-y-1 text-slate-700">
+                  <div><strong>NODE_VERSION:</strong> <span className="text-emerald-600 font-bold">20</span> (asegura compatibilidad)</div>
+                  <div><strong>VITE_SUPABASE_URL:</strong> <span className="text-slate-500">https://tu-id.supabase.co</span></div>
+                  <div><strong>VITE_SUPABASE_ANON_KEY:</strong> <span className="text-slate-500">tu-clave-anon</span></div>
+                </div>
               </div>
             </li>
           </ol>

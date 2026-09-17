@@ -1,17 +1,19 @@
 # Render Blueprint Configuration
 # Documentación: https://render.com/docs/blueprint-spec
 services:
-  # Opción 1: Static Site (Recomendado y gratuito en Render para Vite + Supabase)
+  # Static Site (100% Gratuito en Render para React + Vite + Supabase)
   - type: web
     name: clinica-veterinaria-mascotas
     env: static
-    buildCommand: npm run build
-    staticPublishPath: ./dist
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
     envVars:
+      - key: NODE_VERSION
+        value: "20"
       - key: VITE_SUPABASE_URL
         sync: false
       - key: VITE_SUPABASE_ANON_KEY
