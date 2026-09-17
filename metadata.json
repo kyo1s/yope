@@ -1,0 +1,6 @@
+{
+  "name": "Clínica Veterinaria & Odontología Mascotas",
+  "description": "Sistema de gestión clínica y odontológica para mascotas con control de turnos (08:00-13:00 y 14:00-18:00), registro de pacientes, panel para dentistas y soporte para Supabase y Render.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
